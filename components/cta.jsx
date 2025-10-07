@@ -18,8 +18,8 @@ const CtaSection = () => {
           images and bring their vision to life.
         </p>
         <Link href="/dashboard">
-          <Button variant="primary" size="xl">
-            🌟 Start Creating Now
+          <Button variant="primary" size="xl" className="cursor-pointer">
+            Start Creating Now 🌟
           </Button>
         </Link>
       </div>

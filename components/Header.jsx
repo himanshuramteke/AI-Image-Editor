@@ -1,7 +1,7 @@
 "use client";
 
 import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-import { LayoutDashboard, Sparkles } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useStoreUser } from "@/hooks/use-store-user";
@@ -46,12 +46,6 @@ const Header = () => {
             >
               Pricing
             </Link>
-            <Link
-              href="#contact"
-              className="text-white font-medium transition-all duration-300 hover:text-cyan-400 cursor-pointer"
-            >
-              Contact
-            </Link>
           </div>
         )}
 
@@ -60,7 +54,7 @@ const Header = () => {
             <Link href="/dashboard">
               <Button variant="glass" className="hidden sm:flex">
                 <LayoutDashboard className="h-4 w-4" />
-                <span className="hidden md:flex">Dashboard</span>
+                <span className="hidden md:flex cursor-pointer">Dashboard</span>
               </Button>
             </Link>
 
