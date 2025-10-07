@@ -18,3 +18,28 @@ export const useIntersectionObserver = (threshold = 0.1) => {
 
   return [ref, isVisible];
 };
+
+export const useAnimatedCounter = (target, duration = 2000) => {
+  const [count, setCount] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (!isActive) return;
+
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      setCount((prev) => {
+        const next = prev + step;
+        if (next >= target) {
+          clearInterval(timer);
+          return target;
+        }
+        return next;
+      });
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [target, duration, isActive]);
+
+  return [Math.floor(count), setIsActive];
+};

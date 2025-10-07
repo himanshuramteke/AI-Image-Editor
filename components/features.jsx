@@ -1,3 +1,5 @@
+"use client";
+
 import { useIntersectionObserver } from "@/hooks/use-landing";
 import { useState } from "react";
 
