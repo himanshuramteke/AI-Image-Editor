@@ -4,7 +4,9 @@ import { useConvexQuery } from "@/hooks/use-convex-query";
 import { useState } from "react";
 import NewProjectModal from "./_components/NewProjectModal";
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+import { api } from "@/convex/_generated/api";
+import { Plus, Sparkles, Image } from "lucide-react";
+import { ProjectGrid } from "./_components/ProjectGrid";
 
 const Dashboard = () => {
   const [showNewProjectModal, setShowNewProjectModal] = useState(false);
