@@ -7,6 +7,9 @@ import { Loader2, Monitor } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { RingLoader } from "react-spinners";
+import CanvasEditor from "./_components/CanvasEditor";
+import EditorSidebar from "./_components/EditorSidebar";
+import EditorTopbar from "./_components/EditorTopbar";
 
 const Editor = async () => {
   const params = useParams();
@@ -94,6 +97,20 @@ const Editor = async () => {
               </div>
             </div>
           )}
+
+          {/* Top bar */}
+          <EditorTopbar />
+
+          {/* Main editor layout */}
+          <div className="flex flex-1 overflow-hidden">
+            {/* Sidebar */}
+            <EditorSidebar project={project} />
+
+            {/* Canvas area */}
+            <div className="flex-1 bg-slate-800">
+              <CanvasEditor project={project} activeTool={activeTool} />
+            </div>
+          </div>
         </div>
       </div>
     </CanvasContext.Provider>
