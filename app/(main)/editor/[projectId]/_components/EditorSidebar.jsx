@@ -1,6 +1,15 @@
 "use client";
 
 import { useCanvas } from "@/context/context";
+import {
+  Crop,
+  Expand,
+  Eye,
+  Maximize2,
+  Palette,
+  Sliders,
+  Text,
+} from "lucide-react";
 
 const TOOL_CONFIGS = {
   resize: {
@@ -70,4 +79,23 @@ export const EditorSidebar = ({ project }) => {
   );
 };
 
-function renderToolContent() {}
+function renderToolContent() {
+  switch (activeTool) {
+    case "crop":
+      return <CropContent />;
+    case "resize":
+      return <ResizeControls />;
+    case "adjust":
+      return <AdjustControls />;
+    case "background":
+      return <BackgroundControls />;
+    case "ai_extender":
+      return <AIExtenderControls />;
+    case "text":
+      return <TextControls />;
+    case "ai_edit":
+      return <AIEdit />;
+    default:
+      return <div className="text-white">Select a tool to get started.</div>;
+  }
+}
