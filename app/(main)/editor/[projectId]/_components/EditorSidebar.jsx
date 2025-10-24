@@ -10,6 +10,13 @@ import {
   Sliders,
   Text,
 } from "lucide-react";
+import { CropContent } from "./_tools/CropContent";
+import { AIEdit } from "./_tools/AIEdit";
+import { TextControls } from "./_tools/TextControls";
+import { AIExtenderControls } from "./_tools/AIExtenderControls";
+import { BackgroundControls } from "./_tools/BackgroundControls";
+import { AdjustControls } from "./_tools/AdjustControls";
+import { ResizeControls } from "./_tools/ResizeControls";
 
 const TOOL_CONFIGS = {
   resize: {
