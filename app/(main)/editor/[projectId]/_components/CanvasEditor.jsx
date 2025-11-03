@@ -19,7 +19,7 @@ const CanvasEditor = ({ project }) => {
     api.projects.updateProject
   );
 
-  const calculateViewportSclae = () => {
+  const calculateViewportScale = () => {
     if (!containerRef.current || !project) return 1;
     const container = containerRef.current;
     const containerWidth = container.clientWidth - 40;
@@ -35,7 +35,7 @@ const CanvasEditor = ({ project }) => {
     const initializeCanvas = async () => {
       setIsLoading(true);
 
-      const viewportScale = calculateViewportSclae();
+      const viewportScale = calculateViewportScale();
       const canvas = new Canvas(canvasRef.current, {
         width: project.width,
         height: project.height,
