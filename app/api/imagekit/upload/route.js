@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 
 const imageKit = new ImageKit({
   publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY,
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  privateKey: process.env.NEXT_PUBLIC_IMAGEKIT_PRIVATE_URL,
   urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT,
 });
 
@@ -36,7 +36,7 @@ export async function POST(request) {
     const uniqueFileName = `${userId}/${timestamp}_${sanitizedFileName}`;
 
     // Upload to ImageKit - Simple server-side upload
-    const uploadResponse = await imagekit.upload({
+    const uploadResponse = await imageKit.upload({
       file: buffer,
       fileName: uniqueFileName,
       folder: "/projects",
