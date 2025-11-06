@@ -29,7 +29,7 @@ export const create = mutation({
     height: v.number(),
     canvasState: v.optional(v.any()),
   },
-  handler: async (ctx) => {
+  handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
 
     //check plan limits for free users

@@ -56,7 +56,7 @@ const TOOL_CONFIGS = {
   },
 };
 
-export const EditorSidebar = ({ project }) => {
+const EditorSidebar = ({ project }) => {
   const { activeTool } = useCanvas();
   const toolConfig = TOOL_CONFIGS[activeTool];
 
@@ -85,6 +85,8 @@ export const EditorSidebar = ({ project }) => {
     </div>
   );
 };
+
+export default EditorSidebar;
 
 function renderToolContent() {
   switch (activeTool) {

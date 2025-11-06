@@ -11,7 +11,7 @@ import CanvasEditor from "./_components/CanvasEditor";
 import EditorSidebar from "./_components/EditorSidebar";
 import EditorTopbar from "./_components/EditorTopbar";
 
-const Editor = async () => {
+const Editor = () => {
   const params = useParams();
   const projectId = params.projectId;
   const [canvasEditor, setCanvasEditor] = useState(null);
@@ -25,7 +25,7 @@ const Editor = async () => {
     data: project,
     isLoading,
     error,
-  } = useConvexQuery(api.projects.getProjects, { projectId });
+  } = useConvexQuery(api.projects.getProject, { projectId });
 
   if (isLoading) {
     return (

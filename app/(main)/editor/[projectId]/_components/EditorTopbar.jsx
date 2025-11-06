@@ -106,7 +106,7 @@ const EXPORT_FORMATS = [
   },
 ];
 
-export function EditorTopBar({ project }) {
+const EditorTopbar = ({ project }) => {
   const router = useRouter();
   const [isExporting, setIsExporting] = useState(false);
   const [exportFormat, setExportFormat] = useState(null);
@@ -619,4 +619,6 @@ export function EditorTopBar({ project }) {
       />
     </>
   );
-}
+};
+
+export default EditorTopbar;
