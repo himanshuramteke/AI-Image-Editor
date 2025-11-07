@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useCanvas } from "@/context/context";
 import { useConvexMutation } from "@/hooks/use-convex-query";
 import { api } from "@/convex/_generated/api";
-import { Canvas } from "fabric";
+import { Canvas, FabricImage } from "fabric";
 
 const CanvasEditor = ({ project }) => {
   const [isLoading, setIsLoading] = useState(true);

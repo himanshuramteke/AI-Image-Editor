@@ -38,7 +38,7 @@ const Editor = () => {
     );
   }
 
-  if (error || project) {
+  if (error || !project) {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-center">
@@ -99,7 +99,7 @@ const Editor = () => {
           )}
 
           {/* Top bar */}
-          <EditorTopbar />
+          <EditorTopbar project={project} />
 
           {/* Main editor layout */}
           <div className="flex flex-1 overflow-hidden">

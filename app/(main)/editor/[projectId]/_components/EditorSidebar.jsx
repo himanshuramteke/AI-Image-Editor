@@ -88,22 +88,22 @@ const EditorSidebar = ({ project }) => {
 
 export default EditorSidebar;
 
-function renderToolContent() {
+function renderToolContent(activeTool, project) {
   switch (activeTool) {
     case "crop":
       return <CropContent />;
     case "resize":
-      return <ResizeControls />;
+      return <ResizeControls project={project} />;
     case "adjust":
       return <AdjustControls />;
     case "background":
-      return <BackgroundControls />;
+      return <BackgroundControls project={project} />;
     case "ai_extender":
-      return <AIExtenderControls />;
+      return <AIExtenderControls project={project} />;
     case "text":
       return <TextControls />;
     case "ai_edit":
-      return <AIEdit />;
+      return <AIEdit project={project} />;
     default:
       return <div className="text-white">Select a tool to get started.</div>;
   }

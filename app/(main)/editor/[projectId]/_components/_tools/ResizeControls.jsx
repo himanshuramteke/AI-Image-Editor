@@ -20,7 +20,7 @@ const ASPECT_RATIOS = [
 export const ResizeControls = ({ project }) => {
   const { canvasEditor, processingMessage, setProcessingMessage } = useCanvas();
   const [newWidth, setNewWidth] = useState(project?.width || 800);
-  const [newHeigth, setNewHeight] = useState(project?.height || 600);
+  const [newHeight, setNewHeight] = useState(project?.height || 600);
   const [lockAspectRatio, setLockAspectRatio] = useState(true);
   const [selectedPreset, setSelectedPreset] = useState(null);
 
@@ -120,7 +120,7 @@ export const ResizeControls = ({ project }) => {
       canvasEditor.setDimensions(
         {
           width: newWidth * viewportScale,
-          height: newHeigth * viewportScale,
+          height: newHeight * viewportScale,
         },
         { backstoreOnly: false }
       );
@@ -133,7 +133,7 @@ export const ResizeControls = ({ project }) => {
       await updateProject({
         projectId: project._id,
         width: newWidth,
-        height: newHeigth,
+        height: newHeight,
         canvasState: canvasEditor.toJSON(),
       });
     } catch (error) {
@@ -152,7 +152,7 @@ export const ResizeControls = ({ project }) => {
     );
   }
 
-  const hasChanges = newWidth !== project.width || newHeigth !== project.height;
+  const hasChanges = newWidth !== project.width || newHeight !== project.height;
 
   return (
     <div className="space-y-6">

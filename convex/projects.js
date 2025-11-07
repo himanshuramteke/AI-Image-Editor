@@ -90,7 +90,7 @@ export const deleteProject = mutation({
 
     // Update user's project count
     await ctx.db.patch(user._id, {
-      projectsUsed: Math.max(0, user.projectsUsed - 1),
+      projectUsed: Math.max(0, user.projectUsed - 1),
       lastActiveAt: Date.now(),
     });
 
