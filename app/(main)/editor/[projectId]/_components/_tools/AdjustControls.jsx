@@ -85,8 +85,8 @@ const DEFAULT_VALUES = FILTER_CONFIGS.reduce((acc, config) => {
 }, {});
 
 export const AdjustControls = () => {
-  const [filterValues, setFilterValues] = useState();
-  const [isApplying, setIsApplying] = useState();
+  const [filterValues, setFilterValues] = useState(DEFAULT_VALUES);
+  const [isApplying, setIsApplying] = useState(false);
   const { canvasEditor } = useCanvas();
 
   const getActiveImage = () => {
