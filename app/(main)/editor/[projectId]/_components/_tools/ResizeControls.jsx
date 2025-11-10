@@ -30,35 +30,34 @@ export const ResizeControls = ({ project }) => {
     isLoading,
   } = useConvexMutation(api.projects.updateProject);
 
-  (useEffect(() => {
+  useEffect(() => {
     if (!isLoading && data) {
-      window.location.reload();
+      console.log("Canvas resized and project updated successfully!");
     }
-  }),
-    [data, isLoading]);
+  }, [data, isLoading]);
 
   //calculate dimensions for aspect ratio based on original canvas size
   const calculateAspectRatioDimensions = (ratio) => {
-    if (!project) return { width: project.width, height: project.height };
+    if (!project) return { width: 800, height: 600 };
 
     const [ratioW, ratioH] = ratio;
     const originalArea = project.width * project.height;
 
     //calculate new dimensions maintaining the same area approximately
     const aspectRatio = ratioW / ratioH;
-    const newHeigth = Math.sqrt(originalArea / aspectRatio);
-    const newWidth = newHeigth * aspectRatio;
+    const newHeight = Math.sqrt(originalArea / aspectRatio);
+    const newWidth = newHeight * aspectRatio;
 
     return {
       width: Math.round(newWidth),
-      height: Math.round(newHeigth),
+      height: Math.round(newHeight),
     };
   };
 
   //Handle width change with aspect ratio lock
   const handleWidthChange = (value) => {
     const width = parseInt(value) || 0;
-    setNewHeight(width);
+    setNewWidth(width);
 
     if (lockAspectRatio && project) {
       const ratio = project.height / project.width;
@@ -82,7 +81,7 @@ export const ResizeControls = ({ project }) => {
   const applyAspectRatio = (aspectRatio) => {
     const dimensions = calculateAspectRatioDimensions(aspectRatio.ratio);
     setNewWidth(dimensions.width);
-    setNewWidth(dimensions.height);
+    setNewHeight(dimensions.height);
     setSelectedPreset(aspectRatio.name);
   };
 
@@ -112,7 +111,7 @@ export const ResizeControls = ({ project }) => {
     try {
       // resize the canvas
       canvasEditor.setWidth(newWidth);
-      canvasEditor.setHeight(newHeigth);
+      canvasEditor.setHeight(newHeight);
 
       //calculate and apply viewport scale
       const viewportScale = calculateViewportScale();
@@ -172,7 +171,7 @@ export const ResizeControls = ({ project }) => {
             variant="ghost"
             size="sm"
             onClick={() => setLockAspectRatio(!lockAspectRatio)}
-            className="text-white/70 hover:text-white p-1"
+            className="text-white/70 hover:text-slate-600 p-1 cursor-pointer"
           >
             {lockAspectRatio ? (
               <Lock className="h-4 w-4" />
@@ -225,15 +224,13 @@ export const ResizeControls = ({ project }) => {
             return (
               <Button
                 key={aspectRatio.name}
-                variant={
-                  selectedPreset === aspectRatio.name ? "default" : "outline"
-                }
+                variant="ghost"
                 size="sm"
                 onClick={() => applyAspectRatio(aspectRatio)}
-                className={`justify-between h-auto py-2 ${
+                className={`justify-between h-auto py-2 transition-colors rounded-lg cursor-pointer ${
                   selectedPreset === aspectRatio.name
-                    ? "bg-cyan-500 hover:bg-cyan-600"
-                    : "text-left"
+                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    : "bg-slate-800 hover:bg-slate-700 text-white/80"
                 }`}
               >
                 <div>
@@ -276,7 +273,7 @@ export const ResizeControls = ({ project }) => {
       <Button
         onClick={handleApplyResize}
         disabled={!hasChanges || processingMessage}
-        className="w-full"
+        className="w-full cursor-pointer"
         variant="primary"
       >
         <Expand className="h-4 w-4 mr-2" />
