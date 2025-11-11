@@ -206,7 +206,7 @@ export const AdjustControls = () => {
           variant="ghost"
           size="sm"
           onClick={resetFilters}
-          className="text-white/70 hover:text-white"
+          className="text-white/70 hover:text-slate-800 cursor-pointer"
         >
           <RotateCcw className="h-4 w-4 mr-2" />
           Reset
@@ -229,7 +229,7 @@ export const AdjustControls = () => {
             min={config.min}
             max={config.max}
             step={config.step}
-            className="w-full"
+            className="w-full cursor-pointer"
           />
         </div>
       ))}
