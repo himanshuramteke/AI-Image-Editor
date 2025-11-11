@@ -64,7 +64,7 @@ export const CropContent = () => {
   };
 
   useEffect(() => {
-    if (activeTool === "crop" && canvasEditor && isCropMode) {
+    if (activeTool === "crop" && canvasEditor && !isCropMode) {
       const image = getActiveImage();
       if (image) {
         initializeCropMode(image);
@@ -277,12 +277,14 @@ export const CropContent = () => {
       canvasEditor.setActiveObject(croppedImage);
       canvasEditor.requestRenderAll();
 
-      // Exit crop mode
-      exitCropMode();
+      setSelectedImage(croppedImage);
+      removeAllCropRectangles();
+      createCropRectangle(croppedImage);
+
+      console.log("Crop applied successfully (staying in crop mode)");
     } catch (error) {
       console.error("Error applying crop:", error);
       alert("Failed to apply crop. Please try again.");
-      exitCropMode();
     }
   };
 
@@ -326,7 +328,7 @@ export const CropContent = () => {
       {!isCropMode && activeImage && (
         <Button
           onClick={() => initializeCropMode(activeImage)}
-          className="w-full"
+          className="w-full cursor-pointer"
           variant="primary"
         >
           <Crop className="h-4 w-4 mr-2" />
@@ -368,12 +370,20 @@ export const CropContent = () => {
       {/* Crop Actions - Only show in crop mode */}
       {isCropMode && (
         <div className="space-y-3 pt-4 border-t border-white/10">
-          <Button onClick={applyCrop} className="w-full" variant="primary">
+          <Button
+            onClick={applyCrop}
+            className="w-full cursor-pointer"
+            variant="primary"
+          >
             <CheckCheck className="h-4 w-4 mr-2" />
             Apply Crop
           </Button>
 
-          <Button onClick={cancelCrop} variant="outline" className="w-full">
+          <Button
+            onClick={cancelCrop}
+            variant="glass"
+            className="w-full cursor-pointer"
+          >
             <X className="h-4 w-4 mr-2" />
             Cancel
           </Button>

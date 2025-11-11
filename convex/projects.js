@@ -6,6 +6,9 @@ import { internal } from "./_generated/api";
 export const getUserProjects = query({
   handler: async (ctx) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) {
+      throw new Error("Not authenticated");
+    }
 
     //Get user's projects, ordered by most recently updated
     const projects = await ctx.db
@@ -31,6 +34,9 @@ export const create = mutation({
   },
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) {
+      throw new Error("Not authenticated");
+    }
 
     //check plan limits for free users
     if (user.plan === "free") {
@@ -75,13 +81,16 @@ export const deleteProject = mutation({
   args: { projectId: v.id("projects") },
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) {
+      throw new Error("Not authenticated");
+    }
 
     const project = await ctx.db.get(args.projectId);
     if (!project) {
       throw new Error("Project not found");
     }
 
-    if (!user || project.userId !== user._id) {
+    if (project.userId !== user._id) {
       throw new Error("Access denied");
     }
 
@@ -103,13 +112,16 @@ export const getProject = query({
   args: { projectId: v.id("projects") },
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) {
+      throw new Error("Not authenticated");
+    }
 
     const project = await ctx.db.get(args.projectId);
     if (!project) {
       throw new Error("Project not found");
     }
 
-    if (!user || project.userId !== user._id) {
+    if (project.userId !== user._id) {
       throw new Error("Access denied");
     }
 
@@ -131,13 +143,16 @@ export const updateProject = mutation({
   },
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
+    if (!user) {
+      throw new Error("Not authenticated");
+    }
 
     const project = await ctx.db.get(args.projectId);
     if (!project) {
       throw new Error("Project not found");
     }
 
-    if (!user || project.userId !== user._id) {
+    if (project.userId !== user._id) {
       throw new Error("Access denied");
     }
 
