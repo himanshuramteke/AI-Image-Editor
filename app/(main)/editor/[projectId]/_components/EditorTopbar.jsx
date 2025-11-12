@@ -417,10 +417,10 @@ const EditorTopbar = ({ project }) => {
           {/* Left: Back button and project name */}
           <div className="flex items-center gap-4">
             <Button
-              variant="ghost"
+              variant="glass"
               size="sm"
               onClick={handleBackToDashboard}
-              className="text-white hover:text-gray-300"
+              className="text-white hover:text-purple-600 cursor-pointer"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               All Projects
@@ -433,11 +433,11 @@ const EditorTopbar = ({ project }) => {
           <div className="flex items-center gap-3">
             {/* Reset Button */}
             <Button
-              variant="outline"
+              variant="glass"
               size="sm"
               onClick={handleResetToOriginal}
               disabled={isSaving || !project.originalImageUrl}
-              className="gap-2"
+              className="gap-2 cursor-pointer hover:text-purple-600"
             >
               {isSaving ? (
                 <>
@@ -458,7 +458,7 @@ const EditorTopbar = ({ project }) => {
               size="sm"
               onClick={handleManualSave}
               disabled={isSaving || !canvasEditor}
-              className="gap-2"
+              className="gap-2 cursor-pointer"
             >
               {isSaving ? (
                 <>
@@ -480,7 +480,7 @@ const EditorTopbar = ({ project }) => {
                   variant="glass"
                   size="sm"
                   disabled={isExporting || !canvasEditor}
-                  className="gap-2"
+                  className="gap-2 cursor-pointer hover:text-purple-600"
                 >
                   {isExporting ? (
                     <>
@@ -555,13 +555,13 @@ const EditorTopbar = ({ project }) => {
               return (
                 <Button
                   key={tool.id}
-                  variant={isActive ? "default" : "ghost"}
+                  variant={isActive ? "default" : "glass"}
                   size="sm"
                   onClick={() => handleToolChange(tool.id)}
-                  className={`gap-2 relative ${
+                  className={`gap-2 relative cursor-pointer ${
                     isActive
                       ? "bg-blue-600 text-white hover:bg-blue-700"
-                      : "text-white hover:text-gray-300 hover:bg-gray-100"
+                      : "text-white hover:text-gray-700 hover:bg-slate-100"
                   } ${!hasToolAccess ? "opacity-60" : ""}`}
                 >
                   <Icon className="h-4 w-4" />
@@ -581,7 +581,7 @@ const EditorTopbar = ({ project }) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className={`text-white ${!canUndo ? "opacity-50 cursor-not-allowed" : "hover:bg-slate-700"}`}
+                className={`text-white cursor-pointer ${!canUndo ? "opacity-50 cursor-not-allowed" : "hover:bg-slate-700"}`}
                 onClick={handleUndo}
                 disabled={!canUndo || isUndoRedoOperation}
                 title={`Undo (${undoStack.length - 1} actions available)`}
@@ -591,7 +591,7 @@ const EditorTopbar = ({ project }) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className={`text-white ${!canRedo ? "opacity-50 cursor-not-allowed" : "hover:bg-slate-700"}`}
+                className={`text-white cursor-pointer ${!canRedo ? "opacity-50 cursor-not-allowed" : "hover:bg-slate-300"}`}
                 onClick={handleRedo}
                 disabled={!canRedo || isUndoRedoOperation}
                 title={`Redo (${redoStack.length} actions available)`}
