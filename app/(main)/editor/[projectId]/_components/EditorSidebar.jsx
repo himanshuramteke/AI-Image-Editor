@@ -14,7 +14,7 @@ import { CropContent } from "./_tools/CropContent";
 import { AIEdit } from "./_tools/AIEdit";
 import { TextControls } from "./_tools/TextControls";
 import { AIExtenderControls } from "./_tools/AIExtenderControls";
-import { BackgroundControls } from "./_tools/BackgroundControls";
+import { AIBackgroundControls } from "./_tools/AIBackgroundControls";
 import { AdjustControls } from "./_tools/AdjustControls";
 import { ResizeControls } from "./_tools/ResizeControls";
 
@@ -97,7 +97,7 @@ function renderToolContent(activeTool, project) {
     case "adjust":
       return <AdjustControls />;
     case "background":
-      return <BackgroundControls project={project} />;
+      return <AIBackgroundControls project={project} />;
     case "ai_extender":
       return <AIExtenderControls project={project} />;
     case "text":

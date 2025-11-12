@@ -62,7 +62,7 @@ export const AIEdit = ({ project }) => {
   const getMainImage = () =>
     canvasEditor?.getObjects().find((obj) => obj.type === "image") || null;
 
-  const buildRetouchUrl = (image, presetKey) => {
+  const buildRetouchUrl = (imageUrl, presetKey) => {
     const preset = RETOUCH_PRESETS.find((p) => p.key === presetKey);
     if (!imageUrl || !presetKey) return imageUrl;
 
@@ -234,7 +234,11 @@ export const AIEdit = ({ project }) => {
       </div>
 
       {/* Apply Button */}
-      <Button onClick={applyRetouch} className="w-full" variant="primary">
+      <Button
+        onClick={applyRetouch}
+        className="w-full cursor-pointer"
+        variant="primary"
+      >
         <Wand2 className="h-4 w-4 mr-2" />
         Apply {selectedPresetData?.label}
       </Button>

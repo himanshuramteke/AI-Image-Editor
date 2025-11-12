@@ -21,7 +21,7 @@ import { FabricImage } from "fabric";
 const UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
 const UNSPLASH_API_URL = "https://api.unsplash.com";
 
-export function BackgroundControls({ project }) {
+export function AIBackgroundControls({ project }) {
   const { canvasEditor, processingMessage, setProcessingMessage } = useCanvas();
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [searchQuery, setSearchQuery] = useState("");
@@ -226,7 +226,7 @@ export function BackgroundControls({ project }) {
         <Button
           onClick={handleBackgroundRemoval}
           disabled={processingMessage || !getMainImage()}
-          className="w-full"
+          className="w-full cursor-pointer"
           variant="primary"
         >
           <Trash2 className="h-4 w-4 mr-2" />
@@ -245,14 +245,14 @@ export function BackgroundControls({ project }) {
         <TabsList className="grid w-full grid-cols-2 bg-slate-700/50">
           <TabsTrigger
             value="color"
-            className="data-[state=active]:bg-cyan-500 data-[state=active]:text-white"
+            className="data-[state=active]:bg-cyan-500 data-[state=active]:text-white cursor-pointer"
           >
             <Palette className="h-4 w-4 mr-2" />
             Color
           </TabsTrigger>
           <TabsTrigger
             value="image"
-            className="data-[state=active]:bg-cyan-500 data-[state=active]:text-white"
+            className="data-[state=active]:bg-cyan-500 data-[state=active]:text-white cursor-pointer"
           >
             <ImageIcon className="h-4 w-4 mr-2" />
             Image
@@ -292,7 +292,7 @@ export function BackgroundControls({ project }) {
 
             <Button
               onClick={handleColorBackground}
-              className="w-full"
+              className="w-full cursor-pointer"
               variant="primary"
             >
               <Palette className="h-4 w-4 mr-2" />
@@ -319,7 +319,7 @@ export function BackgroundControls({ project }) {
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={handleSearchKeyPress}
               placeholder="Search for backgrounds..."
-              className="flex-1 bg-slate-700 border-white/20 text-white"
+              className="flex-1 bg-slate-700 border-white/20 text-white cursor-pointer"
             />
             <Button
               onClick={searchUnsplashImages}
@@ -329,7 +329,7 @@ export function BackgroundControls({ project }) {
               {isSearching ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
-                <Search className="h-4 w-4" />
+                <Search className="h-4 w-4 cursor-pointer" />
               )}
             </Button>
           </div>
@@ -419,8 +419,8 @@ export function BackgroundControls({ project }) {
       <div className="pt-4 border-t border-white/10 bottom-0 w-full">
         <Button
           onClick={handleRemoveBackground}
-          className="w-full"
-          variant="outline"
+          className="w-full cursor-pointer"
+          variant="glass"
         >
           <Trash2 className="h-4 w-4 mr-2" />
           Clear Canvas Background

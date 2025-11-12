@@ -186,8 +186,8 @@ export function AIExtenderControls({ project }) {
             <Button
               key={key}
               onClick={() => selectDirection(key)}
-              variant={selectedDirection === key ? "default" : "outline"}
-              className={`flex items-center gap-2 ${
+              variant={selectedDirection === key ? "default" : "glass"}
+              className={`flex items-center gap-2 cursor-pointer ${
                 selectedDirection === key ? "bg-cyan-500 hover:bg-cyan-600" : ""
               }`}
             >
@@ -210,7 +210,7 @@ export function AIExtenderControls({ project }) {
           min={50}
           max={500}
           step={25}
-          className="w-full"
+          className="w-full cursor-pointer"
           disabled={!selectedDirection}
         />
       </div>
@@ -245,7 +245,7 @@ export function AIExtenderControls({ project }) {
       <Button
         onClick={applyExtension}
         disabled={!selectedDirection}
-        className="w-full"
+        className="w-full cursor-pointer"
         variant="primary"
       >
         <Wand2 className="h-4 w-4 mr-2" />
