@@ -34,7 +34,7 @@ const Dashboard = () => {
             onClick={() => setShowNewProjectModal(true)}
             variant="primary"
             size="lg"
-            className="gap-2"
+            className="gap-2 cursor-pointer"
           >
             <Plus className="h-5 w-5" />
             New Project
@@ -84,7 +84,7 @@ function EmptyState({ onCreateProject }) {
         onClick={onCreateProject}
         variant="primary"
         size="xl"
-        className="gap-2"
+        className="gap-2 cursor-pointer"
       >
         <Sparkles className="h-5 w-5" />
         Start Creating

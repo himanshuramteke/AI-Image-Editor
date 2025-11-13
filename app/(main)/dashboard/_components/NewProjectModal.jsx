@@ -207,7 +207,7 @@ const NewProjectModal = ({ isOpen, onClose }) => {
                       setPreviewUrl(null);
                       setProjectTitle("");
                     }}
-                    className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white"
+                    className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white cursor-pointer"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -248,10 +248,10 @@ const NewProjectModal = ({ isOpen, onClose }) => {
 
           <DialogFooter className="gap-3">
             <Button
-              variant="ghost"
+              variant="glass"
               onClick={handleClose}
               disabled={isUploading}
-              className="text-white/70 hover:text-white"
+              className="text-white/70 cursor-pointer"
             >
               Cancel
             </Button>
@@ -260,6 +260,7 @@ const NewProjectModal = ({ isOpen, onClose }) => {
               onClick={handleCreateProject}
               disabled={!selectedFile || !projectTitle.trim() || isUploading}
               variant="primary"
+              className="cursor-pointer"
             >
               {isUploading ? (
                 <>

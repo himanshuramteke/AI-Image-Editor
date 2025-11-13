@@ -44,7 +44,12 @@ export const ProjectCard = ({ project, onEdit }) => {
         )}
 
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-          <Button variant="glass" size="sm" onClick={onEdit} className="gap-2">
+          <Button
+            variant="glass"
+            size="sm"
+            onClick={onEdit}
+            className="gap-2 cursor-pointer"
+          >
             <Edit className="h-4 w-4" />
             Edit
           </Button>
@@ -52,7 +57,7 @@ export const ProjectCard = ({ project, onEdit }) => {
             variant="glass"
             size="sm"
             onClick={handleDelete}
-            className="gap-2 text-red-400 hover:text-red-300"
+            className="gap-2 text-red-400 hover:text-red-300 cursor-pointer"
             disabled={isLoading}
           >
             <Trash2 className="h-4 w-4" />
