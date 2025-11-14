@@ -516,7 +516,7 @@ const EditorTopbar = ({ project }) => {
                     <FileImage className="h-4 w-4" />
                     <div className="flex-1">
                       <div className="font-medium">{config.label}</div>
-                      <div className="text-xs text-white/50">
+                      <div className="text-xs text-white hover:text-black">
                         {config.format} • {Math.round(config.quality * 100)}%
                         quality
                       </div>

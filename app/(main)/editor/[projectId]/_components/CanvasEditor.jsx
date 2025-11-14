@@ -39,7 +39,7 @@ const CanvasEditor = ({ project }) => {
       const canvas = new Canvas(canvasRef.current, {
         width: project.width,
         height: project.height,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#1e1e1e",
         preserveObjectStacking: true,
         controlsAboveOverlay: true,
         selection: true,
@@ -234,7 +234,7 @@ const CanvasEditor = ({ project }) => {
   return (
     <div
       ref={containerRef}
-      className="relative flex items-center justify-center bg-secondary w-full h-full overlflow-hidden"
+      className="relative flex items-center justify-center bg-[#0f0f0f] w-full h-full overlflow-hidden"
     >
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
