@@ -54,9 +54,9 @@ export function UpgradeModal({ isOpen, onClose, restrictedTool, reason }) {
 
         <DialogFooter className="justify-center">
           <Button
-            variant="ghost"
+            variant="glass"
             onClick={onClose}
-            className="text-white/70 hover:text-white"
+            className="text-white/70 hover:text-white cursor-pointer"
           >
             Maybe Later
           </Button>

@@ -8,6 +8,7 @@ import {
   Maximize2,
   Palette,
   Sliders,
+  Sparkles,
   Text,
 } from "lucide-react";
 import { CropContent } from "./_tools/CropContent";
@@ -17,6 +18,7 @@ import { AIExtenderControls } from "./_tools/AIExtenderControls";
 import { AIBackgroundControls } from "./_tools/AIBackgroundControls";
 import { AdjustControls } from "./_tools/AdjustControls";
 import { ResizeControls } from "./_tools/ResizeControls";
+import { AIChangeBackground } from "./_tools/AIChangeBackground";
 
 const TOOL_CONFIGS = {
   resize: {
@@ -38,6 +40,11 @@ const TOOL_CONFIGS = {
     title: "Background",
     icon: Palette,
     description: "Remove or change background",
+  },
+  change_background: {
+    title: "AI Change Background",
+    icon: Sparkles,
+    description: "Change background using ai",
   },
   ai_extender: {
     title: "AI Image Extender",
@@ -104,6 +111,8 @@ function renderToolContent(activeTool, project) {
       return <TextControls />;
     case "ai_edit":
       return <AIEdit project={project} />;
+    case "ai_change_background":
+      return <AIChangeBackground project={project} />;
     default:
       return <div className="text-white">Select a tool to get started.</div>;
   }

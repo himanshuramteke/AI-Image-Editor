@@ -19,6 +19,7 @@ import {
   Download,
   FileImage,
   Lock,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -63,6 +64,12 @@ const TOOLS = [
     id: "background",
     label: "AI Background",
     icon: Palette,
+    proOnly: true,
+  },
+  {
+    id: "change_background",
+    label: "AI Background Change",
+    icon: Sparkles,
     proOnly: true,
   },
   {
