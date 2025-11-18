@@ -16,6 +16,7 @@ export const usePlanAccess = () => {
 
     // Pro-only tools
     background: isPro,
+    change_background: isPro,
     ai_extender: isPro,
     ai_edit: isPro,
   };

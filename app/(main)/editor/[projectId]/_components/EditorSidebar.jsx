@@ -44,7 +44,7 @@ const TOOL_CONFIGS = {
   change_background: {
     title: "AI Change Background",
     icon: Sparkles,
-    description: "Change background using ai",
+    description: "Change background using AI",
   },
   ai_extender: {
     title: "AI Image Extender",
@@ -111,7 +111,7 @@ function renderToolContent(activeTool, project) {
       return <TextControls />;
     case "ai_edit":
       return <AIEdit project={project} />;
-    case "ai_change_background":
+    case "change_background":
       return <AIChangeBackground project={project} />;
     default:
       return <div className="text-white">Select a tool to get started.</div>;
