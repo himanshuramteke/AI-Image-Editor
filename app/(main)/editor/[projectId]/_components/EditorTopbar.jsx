@@ -62,13 +62,13 @@ const TOOLS = [
   },
   {
     id: "background",
-    label: "AI Background",
+    label: "AI Background Remove",
     icon: Palette,
     proOnly: true,
   },
   {
     id: "change_background",
-    label: "AI Background Change",
+    label: "AI Background Transform",
     icon: Sparkles,
     proOnly: true,
   },
